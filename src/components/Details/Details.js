@@ -1,4 +1,4 @@
-const DetailsPage = () => {
+const Details = () => {
 
     return (
         <section id="details-page" className="details">
@@ -30,4 +30,4 @@ const DetailsPage = () => {
     );
 };
 
-export default DetailsPage;
+export default Details;

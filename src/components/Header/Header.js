@@ -1,20 +1,43 @@
-const Header = () => {
+import { Link, NavLink } from 'react-router-dom';
+
+const Header = ({
+    isAuthenticated,
+    user
+}) => {
+    const activeFunc = ({ isActive }) => {
+        return {
+            color: isActive ? 'black' : '',
+            backgroundColor: isActive ? 'white' : '',
+        };
+    };
+
+    let guestNavigation = (
+        <div id="guest">
+            <NavLink style={activeFunc} className="button" to="/login">Login</NavLink>
+            <NavLink style={activeFunc} className="button" to="/register">Register</NavLink>
+        </div>
+    );
+
+    let userNavigation = (
+        <div id="user">
+            <span>Welcome, {user}</span>
+            <NavLink style={activeFunc} className="button" to="/my-pets">My Pets</NavLink>
+            <NavLink style={activeFunc} className="button" to="/create">Add Pet</NavLink>
+            <NavLink style={activeFunc} className="button" to="/logout">Logout</NavLink>
+        </div>
+    );
 
     return (
         <header id="site-header">
             <nav className="navbar">
                 <section className="navbar-dashboard">
-                    <a href="/home">Dashboard</a>
-                    <div id="guest">
-                        <a className="button" href="#">Login</a>
-                        <a className="button" href="#">Register</a>
-                    </div>
-                    <div id="user">
-                        <span>Welcome, email</span>
-                        <a className="button" href="#">My Pets</a>
-                        <a className="button" href="#">Add Pet</a>
-                        <a className="button" href="#">Logout</a>
-                    </div>
+                    <Link to="/home">Dashboard</Link>
+
+                    {   isAuthenticated
+                        ? userNavigation
+                        : guestNavigation
+                    }
+
                 </section>
             </nav>
         </header>

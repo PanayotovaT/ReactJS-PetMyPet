@@ -1,4 +1,4 @@
-const MyPetsPage = () => {
+const MyPets = () => {
 
     return (
         <section id="my-pets-page" className="my-pets">
@@ -23,4 +23,4 @@ const MyPetsPage = () => {
     );
 };
 
-export default MyPetsPage;
+export default MyPets;

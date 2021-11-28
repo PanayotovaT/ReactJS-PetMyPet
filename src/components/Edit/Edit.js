@@ -1,4 +1,4 @@
-const EditPage = () => {
+const Edit = () => {
 
     return (
         <section id="edit-page" className="edit">
@@ -43,4 +43,4 @@ const EditPage = () => {
     );
 };
 
-export default EditPage;
+export default Edit;
