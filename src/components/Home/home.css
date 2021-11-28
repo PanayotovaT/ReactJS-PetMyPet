@@ -1,0 +1,7 @@
+.logo g:hover{
+    fill: blue;
+}
+
+.logo g circle:hover{
+    fill: green;
+}

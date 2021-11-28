@@ -1,5 +1,7 @@
 import { Routes, Route, Link } from 'react-router-dom';
 import PetList from '../PetList/PetList';
+import { ReactComponent as Logo } from '../../logo.svg';
+import './home.css';
 
 const Home = () => {
 
@@ -19,7 +21,7 @@ const Home = () => {
 
                 </Routes>
             </section>
-
+            <Logo className="logo" />
 
         </section>
     );

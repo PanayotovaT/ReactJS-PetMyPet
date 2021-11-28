@@ -18,7 +18,7 @@ const Login = ({
         if(email !== '' && password !== '') {
             authService.login(email);
             onLogin(email);
-            navigate('/');
+            navigate('/home');
         }
     };
 

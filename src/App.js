@@ -9,7 +9,8 @@ import Register from './components/Register';
 import Create from './components/Create';
 // import Edit from './components/Edit';
 import MyPets from './components/MyPets';
-// import Details from './components/Details';
+import Details from './components/Details';
+import Logout from './components/Logout';
 
 function App() {
 
@@ -30,6 +31,13 @@ function App() {
     });
   };
 
+  const onLogout = ( username ) => {
+    setUserInfo({
+      isAuthenticated: false,
+      user: null,
+    });
+  };
+
   return (
     <div id="container">
 
@@ -40,10 +48,11 @@ function App() {
           <Route path="/home/*" element={<Home />} />
           <Route path="/login" element={<Login onLogin={onLogin} />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/logout" element={<Logout  onLogout={onLogout} />} />
           <Route path="/create" element={<Create />} />
           {/* <Route path="/edit/:petId" element={<Edit />} /> */}
           <Route path="/my-pets" element={<MyPets />} />
-          {/* <Route path="/details/:petId" element={<Details />} /> */}
+          <Route path="/details/:petId" element={<Details />} />
         </Routes>
 
       </main>

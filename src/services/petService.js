@@ -7,6 +7,13 @@ export const getAll = async () => {
    return result;
 };
 
+export const getOne = async (petId) => {
+   let response = await fetch(`${baseUrl}/pets/${petId}`);
+   let pet = await response.json();
+   return pet;
+};
+
+
 export const create = async (petData) => {
    let response = await fetch(`${baseUrl}/pets`, {
       method: 'POST',
