@@ -5,3 +5,13 @@
 .logo g circle:hover{
     fill: green;
 }
+
+.type {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.type:hover{
+    color:rgb(122, 143, 4);
+    font-size: 24px;
+}
