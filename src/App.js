@@ -12,6 +12,7 @@ import MyPets from './components/MyPets';
 import Details from './components/Details';
 import Logout from './components/Logout';
 
+
 function App() {
 
   const [userInfo, setUserInfo] = useState({ isAuthenticated: false, username: '' });
