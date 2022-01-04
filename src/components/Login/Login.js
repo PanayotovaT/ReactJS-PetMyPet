@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import * as authService from '../../services/authServices';
+import * as autService from '../../services/authServices.js';
 
 const Login = ({
     onLogin,
@@ -10,15 +10,31 @@ const Login = ({
     const onSubmitHandler = (e) => {
         e.preventDefault();
 
-        let formData = new FormData(e.currentTarget);
+        let formData = new FormData(e.target);
 
         let email = formData.get('email');
         let password= formData.get('password'); 
+        console.log(email, password);
 
         if(email !== '' && password !== '') {
-            authService.login(email);
-            onLogin(email);
-            navigate('/home');
+            console.log('hi');
+            autService.login(email, password)
+                    .then(result => {
+                    console.log(result);
+                    onLogin(result);
+                            navigate('/home');
+                }).catch(err => {
+                    //TODO show notification
+                    console.log(err);
+                });
+            // authService.login(email, password)
+            //     .then((res) => {
+            //         console.log('here');
+            //         console.log(res);
+            //         onLogin(res.email);
+            //         navigate('/home');
+            //     });
+
         }
     };
 

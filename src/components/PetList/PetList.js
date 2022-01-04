@@ -8,7 +8,10 @@ export const PetList = () => {
     useEffect(() => {
         petService.getAll()
             .then(result => {
-                setPets(result);
+                if(result.length > 0) {
+
+                    setPets(result);
+                }
             });
     }, []);
 

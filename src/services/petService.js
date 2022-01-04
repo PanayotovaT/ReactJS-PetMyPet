@@ -2,9 +2,14 @@ const baseUrl = 'https://softuni-custom-server-test.herokuapp.com/jsonstore';
 
 export const getAll = async () => {
    let response = await fetch(`${baseUrl}/pets`);
-   let pets = await response.json();
-   let result = Object.values(pets);
-   return result;
+   if(response.status !== 204) {
+      let pets = await response.json();
+      let result = Object.values(pets);
+      return result;
+
+   } else {
+      return [];
+   }
 };
 
 export const getOne = async (petId) => {

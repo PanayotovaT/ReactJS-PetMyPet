@@ -1,6 +1,6 @@
 import { Routes, Route, Link } from 'react-router-dom';
 import PetList from '../PetList/PetList';
-import { ReactComponent as Logo } from '../../logo.svg';
+// import { ReactComponent as Logo } from '../../logo.svg';
 import './home.css';
 import DogType from '../PetList/DogType';
 import HorseType from '../PetList/HorseType';
@@ -13,9 +13,9 @@ const Home = () => {
         <section id="dashboard-page" className="dashboard">
             <h1>Dashboard</h1>
             <nav>
-                <Link to="dogs" class="type"> Dogs</Link>
-                <Link to="cats" class="type"> Cats</Link>
-                <Link to="horses" class="type"> Horses</Link>
+                <Link to="dogs" className="type"> Dogs</Link>
+                <Link to="cats" className="type"> Cats</Link>
+                <Link to="horses" className="type"> Horses</Link>
             </nav>
             <section>
                 <Routes>
@@ -26,7 +26,7 @@ const Home = () => {
 
                 </Routes>
             </section>
-            <Logo className="logo" />
+            {/* <Logo className="logo" /> */}
 
         </section>
     );

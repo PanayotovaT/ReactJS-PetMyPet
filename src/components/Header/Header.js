@@ -1,8 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 
 const Header = ({
-    isAuthenticated,
-    user
+    email
 }) => {
     const activeFunc = ({ isActive }) => {
         return {
@@ -20,7 +19,7 @@ const Header = ({
 
     let userNavigation = (
         <div id="user">
-            <span>Welcome, {user}</span>
+            <span>Welcome, {email}</span>
             <NavLink style={activeFunc} className="button" to="/my-pets">My Pets</NavLink>
             <NavLink style={activeFunc} className="button" to="/create">Add Pet</NavLink>
             <NavLink style={activeFunc} className="button" to="/logout">Logout</NavLink>
@@ -33,7 +32,7 @@ const Header = ({
                 <section className="navbar-dashboard">
                     <Link to="/home">Dashboard</Link>
 
-                    {   isAuthenticated
+                    {   email
                         ? userNavigation
                         : guestNavigation
                     }

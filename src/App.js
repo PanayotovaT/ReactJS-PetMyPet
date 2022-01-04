@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-
-import * as AuthService from './services/authServices';
+import { AuthContext } from './contexts/AuthContext';
+// import * as AuthService from './services/authServices';
 import Header from './components/Header/';
 import Home from './components/Home';
 import Login from './components/Login';
@@ -15,41 +15,56 @@ import Logout from './components/Logout';
 
 function App() {
 
-  const [userInfo, setUserInfo] = useState({ isAuthenticated: false, username: '' });
+  // const [userInfo, setUserInfo] = useState({ isAuthenticated: false, user: '' });
 
-  useEffect(() => {
-    let user = AuthService.getUser();
-    setUserInfo({
-      isAuthenticated: Boolean(user),
-      user,
-    });
-  }, []);
+  // useEffect(() => {
+  //   let user = AuthService.getUser();
+  //   setUserInfo({
+  //     isAuthenticated: Boolean(user),
+  //     user: user,
+  //   });
+  // }, []);
 
-  const onLogin =( username ) => {
-    setUserInfo({
-      isAuthenticated: true,
-      user: username,
-    });
+  // const onLogin =( userInfo ) => {
+  //   setUserInfo({
+  //     isAuthenticated: true,
+  //     user: userInfo,
+  //   });
+  // };
+
+  // const onLogout = ( username ) => {
+  //   setUserInfo({
+  //     isAuthenticated: false,
+  //     user: null,
+  //   });
+  // };
+  
+  const [user, setUser] = useState({
+    accessToken: null,
+    email: '',
+    _id: ''
+  });
+
+  const onLogin = (userInfo) => {
+    setUser(userInfo);
   };
 
-  const onLogout = ( username ) => {
-    setUserInfo({
-      isAuthenticated: false,
-      user: null,
-    });
+  const onLogout = () => {
+
   };
 
   return (
+    <AuthContext.Provider value={user}>
     <div id="container">
 
-      <Header {...userInfo} />
+      <Header email={user.email} /**{...userInfo}**/ />
 
       <main id="site-content">
         <Routes>
           <Route path="/home/*" element={<Home />} />
           <Route path="/login" element={<Login onLogin={onLogin} />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/logout" element={<Logout  onLogout={onLogout} />} />
+          <Route path="/logout" element={<Logout  /**onLogout={onLogout}**/ />} />
           <Route path="/create" element={<Create />} />
           {/* <Route path="/edit/:petId" element={<Edit />} /> */}
           <Route path="/my-pets" element={<MyPets />} />
@@ -63,6 +78,7 @@ function App() {
       </footer>
 
     </div>
+    </AuthContext.Provider>
   );
 }
 
