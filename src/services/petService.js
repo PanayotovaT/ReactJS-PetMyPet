@@ -1,4 +1,5 @@
-const baseUrl = 'https://softuni-custom-server-test.herokuapp.com/jsonstore';
+// const baseUrl = 'https://softuni-custom-server-test.herokuapp.com/jsonstore';
+const baseUrl = 'http://localhost:3030/data';
 
 export const getAll = async () => {
    let response = await fetch(`${baseUrl}/pets`);
@@ -19,11 +20,12 @@ export const getOne = async (petId) => {
 };
 
 
-export const create = async (petData) => {
+export const create = async (petData, token) => {
    let response = await fetch(`${baseUrl}/pets`, {
       method: 'POST',
       headers: {
-         'content-type': 'application/json'
+         'content-type': 'application/json',
+         'X-Authorization': token,
       },
       body: JSON.stringify(petData)
    });

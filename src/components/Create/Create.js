@@ -1,7 +1,9 @@
 import { useNavigate} from 'react-router-dom';
 import * as petService from '../../services/petService';
-
+import  { useContext } from 'react';
+import  { AuthContext } from '../../contexts/AuthContext';
 const Create = () => {
+    const  { user } = useContext(AuthContext);
     const navigate = useNavigate();
     
     const onPetCreate = async (e) => {
@@ -16,7 +18,7 @@ const Create = () => {
 
         petService.create({
             name, type, imageUrl, description
-        }).then(res => {
+        }, user.accessToken).then(res => {
             navigate('/home');
         });
     };
