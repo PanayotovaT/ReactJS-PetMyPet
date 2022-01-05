@@ -1,10 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import * as autService from '../../services/authServices.js';
-
-const Login = ({
-    onLogin,
-}) => {
-    
+import {useContext} from 'react';
+import { AuthContext } from '../../contexts/AuthContext.js';
+const Login = () => {
+    const { login } =useContext(AuthContext);
     const navigate = useNavigate();
 
     const onSubmitHandler = (e) => {
@@ -21,7 +20,7 @@ const Login = ({
             autService.login(email, password)
                     .then(result => {
                     console.log(result);
-                    onLogin(result);
+                    login(result);
                             navigate('/home');
                 }).catch(err => {
                     //TODO show notification

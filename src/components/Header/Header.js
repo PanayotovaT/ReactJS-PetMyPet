@@ -1,8 +1,9 @@
 import { Link, NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthContext';
 
-const Header = ({
-    email
-}) => {
+const Header = () => {
+    const {user} = useContext(AuthContext);
     const activeFunc = ({ isActive }) => {
         return {
             color: isActive ? 'black' : '',
@@ -19,7 +20,7 @@ const Header = ({
 
     let userNavigation = (
         <div id="user">
-            <span>Welcome, {email}</span>
+            <span>Welcome, {user.email}</span>
             <NavLink style={activeFunc} className="button" to="/my-pets">My Pets</NavLink>
             <NavLink style={activeFunc} className="button" to="/create">Add Pet</NavLink>
             <NavLink style={activeFunc} className="button" to="/logout">Logout</NavLink>
@@ -32,7 +33,7 @@ const Header = ({
                 <section className="navbar-dashboard">
                     <Link to="/home">Dashboard</Link>
 
-                    {   email
+                    {   user.email
                         ? userNavigation
                         : guestNavigation
                     }
