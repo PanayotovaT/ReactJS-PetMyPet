@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { AuthContext } from './contexts/AuthContext';
 // import * as AuthService from './services/authServices';
+import useLocalStorage from './hooks/useLocalStorage';
 import Header from './components/Header/';
 import Home from './components/Home';
 import Login from './components/Login';
@@ -39,7 +40,7 @@ function App() {
   //   });
   // };
   
-  const [user, setUser] = useState({
+  const [user, setUser] = useLocalStorage('user', {
     accessToken: null,
     email: '',
     _id: ''

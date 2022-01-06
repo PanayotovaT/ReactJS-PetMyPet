@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import * as petService from '../../services/petService';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useContext } from 'react';
@@ -15,7 +15,7 @@ const Details = () => {
             setPet(res);
         });
 
-    }, []);
+    }, [petId]);
 
     const deleteHandler = (e) => {
         e.preventDefault();
@@ -31,8 +31,8 @@ const Details = () => {
     };
 
     const ownerButtons = (<>
-        <a className="button" onClick={editHandler} href="/edit">Edit</a>
-        <a className="button" onClick={deleteHandler} href="">Delete</a>
+        <Link className="button" onClick={editHandler} to="/edit">Edit</Link>
+        <a className="button" onClick={deleteHandler} href="true">Delete</a>
     </>);
     const userButtons = (
         <a className="button" href="#">Like</a>
