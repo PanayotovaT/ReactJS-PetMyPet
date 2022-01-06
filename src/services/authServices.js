@@ -53,6 +53,11 @@ export const isAuthenticated = () => {
     return Boolean(getUser());
 };
 
-export const logout = () => {
-    fetch(`${baseUrl}/users/logout`);
+export const onLogout = (token) => {
+    return fetch(`${baseUrl}/users/logout`,{
+        method: 'Get',
+        headers:{
+            'X-Authorization': token
+        }
+    }).then(res => res);
 };

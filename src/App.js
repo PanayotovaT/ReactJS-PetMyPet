@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { AuthContext } from './contexts/AuthContext';
-// import * as AuthService from './services/authServices';
+import * as authService from './services/authServices';
 import useLocalStorage from './hooks/useLocalStorage';
 import Header from './components/Header/';
 import Home from './components/Home';
@@ -40,23 +40,25 @@ function App() {
   //   });
   // };
   
-  const [user, setUser] = useLocalStorage('user', {
+  const initialAuthState = {
     accessToken: null,
     email: '',
     _id: ''
-  });
+  };
+
+  const [user, setUser] = useLocalStorage('user', initialAuthState);
 
   const login = (user) => {
 
     setUser(user);
   };
 
-  const onLogout = () => {
-
+  const logout = () => {
+    setUser(initialAuthState);
   };
 
   return (
-    <AuthContext.Provider value={{user, login}}>
+    <AuthContext.Provider value={{user, login, logout}}>
     <div id="container">
 
       <Header  /**{...userInfo}**/ />
