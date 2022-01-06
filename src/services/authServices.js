@@ -6,7 +6,7 @@ export const login = async (email, password) => {
         password: password
     };
 
-let res  = await fetch(`${baseUrl}/users/login`, {
+    let res = await fetch(`${baseUrl}/users/login`, {
         method: 'Post',
         headers: {
             'Content-Type': 'application/json'
@@ -15,7 +15,29 @@ let res  = await fetch(`${baseUrl}/users/login`, {
     });
 
     let jsonResult = await res.json();
-    if(res.ok) {
+    if (res.ok) {
+        return jsonResult;
+    } else {
+        throw jsonResult.message;
+    }
+};
+
+export const register = async (email, password) => {
+    const data = {
+        email: email,
+        password: password
+    };
+
+    let res = await fetch(`${baseUrl}/users/register`, {
+        method: 'Post',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+
+    let jsonResult = await res.json();
+    if (res.ok) {
         return jsonResult;
     } else {
         throw jsonResult.message;

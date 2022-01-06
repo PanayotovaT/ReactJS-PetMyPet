@@ -33,3 +33,13 @@ export const create = async (petData, token) => {
 
    return pets;
 };
+
+export const del =  (petId, accessToken) => {
+   return fetch(`${baseUrl}/pets/${petId}`, {
+      method: 'Delete',
+      headers: {
+         'Content-Type': 'application/json',
+         'X-Authorization': accessToken
+      },
+   }).then(res => res.json());
+};
