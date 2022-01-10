@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { AuthContext } from './contexts/AuthContext';
+import { Navigate } from 'react-router-dom';
 import * as authService from './services/authServices';
 import useLocalStorage from './hooks/useLocalStorage';
 import Header from './components/Header/';
@@ -65,6 +66,7 @@ function App() {
 
       <main id="site-content">
         <Routes>
+          <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home/*" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

@@ -12,9 +12,14 @@ export const PetList = () => {
 
                     setPets(result);
                 }
+            })
+            .catch(err => {
+                console.log('err');
+                console.log(err);
             });
     }, []);
 
+    console.log(pets);
     return (
         <ul className="other-pets-list">
             {
