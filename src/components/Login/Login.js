@@ -1,9 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import * as autService from '../../services/authServices.js';
 import {useContext} from 'react';
-import { AuthContext } from '../../contexts/AuthContext.js';
+import { useAuthContext } from '../../contexts/AuthContext.js';
 const Login = () => {
-    const { login } =useContext(AuthContext);
+    const { login } = useAuthContext();
+    
     const navigate = useNavigate();
 
     const onSubmitHandler = (e) => {
@@ -13,13 +14,11 @@ const Login = () => {
 
         let email = formData.get('email');
         let password= formData.get('password'); 
-        console.log(email, password);
 
         if(email !== '' && password !== '') {
             console.log('hi');
             autService.login(email, password)
                     .then(result => {
-                    console.log(result);
                     login(result);
                             navigate('/home');
                 }).catch(err => {

@@ -61,7 +61,7 @@ li {
 }
 
 .img {
-    width: 15rem;
+    width: auto;
     position: relative;
     overflow: hidden;
     padding: 0rem;
@@ -74,7 +74,7 @@ img {
     right: 0;
     width: 100%;
     height: auto;
-    object-fit: cover;
+    object-fit: cover !important; 
 }
 
 .img::after {
@@ -139,7 +139,9 @@ div.actions {
 }
 div.actions a {
     margin-right: 10px;
-    height: 25px;
+    /* height: 25px; */
+    height: auto;
+    /* padding: 5px 15px; */
 }
 
 .deletePet>form,

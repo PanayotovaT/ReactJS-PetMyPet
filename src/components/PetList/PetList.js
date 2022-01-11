@@ -19,7 +19,7 @@ export const PetList = () => {
             });
     }, []);
 
-    console.log(pets);
+
     return (
         <ul className="other-pets-list">
             {
