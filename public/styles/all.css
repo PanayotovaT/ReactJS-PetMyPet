@@ -131,6 +131,7 @@ img.hearts {
     height: 30px;
     position: relative;
     display: inline-block;
+    margin: 10px;
 }
 
 div.actions {

@@ -16,7 +16,7 @@ const Create = () => {
         let description = formData.get('description');
 
         petService.create({
-            name, type, imageUrl, description
+            name, type, imageUrl, description,
         }, user.accessToken).then(res => {
             navigate('/home');
         });

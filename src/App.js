@@ -10,7 +10,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
 import Create from './components/Create';
-// import Edit from './components/Edit';
+import Edit from './components/Edit';
 import MyPets from './components/MyPets';
 import Details from './components/Details';
 import Logout from './components/Logout';
@@ -60,7 +60,7 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/logout" element={<Logout  /**onLogout={onLogout}**/ />} />
               <Route path="/create" element={<Create />} />
-              {/* <Route path="/edit/:petId" element={<Edit />} /> */}
+              <Route path="/edit/:petId" element={<Edit />} />
               <Route path="/my-pets" element={<MyPets />} />
               <Route path="/details/:petId" element={<Details />} />
             </Routes>

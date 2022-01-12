@@ -35,3 +35,17 @@ export const del = (petId, accessToken) => {
       },
    }).then(res => res.json());
 };
+
+export const like = (petId, pet, accessToken) => {
+   return fetch(`${baseUrl}/pets/${petId}`, {
+      method: 'PUT',
+      headers: {
+         'Content-Type': 'application/json',
+         'X-Authorization': accessToken
+      },
+      body: JSON.stringify(pet)
+   }).then(res => res.json())
+   .catch(err =>{
+       console.log(err);
+      }); 
+};
