@@ -1,9 +1,9 @@
-import { request } from './requester';
+import * as request from './requester';
 
 // const baseUrl = 'https://softuni-custom-server-test.herokuapp.com/jsonstore';
 const baseUrl = 'http://localhost:3030/data';
 
-export const getAll =() => request(`${baseUrl}/pets`);
+export const getAll =() => request.get(`${baseUrl}/pets`);
 
 export const getOne = async (petId) => {
    let response = await fetch(`${baseUrl}/pets/${petId}`);
@@ -11,6 +11,9 @@ export const getOne = async (petId) => {
    return pet;
 };
 
+export const update = (petId, petData) => {
+   request.put(`${baseUrl}/pets/${petId}`, petData);
+};
 
 export const create = async (petData, token) => {
    let response = await fetch(`${baseUrl}/pets`, {
@@ -49,3 +52,4 @@ export const like = (petId, pet, accessToken) => {
        console.log(err);
       }); 
 };
+

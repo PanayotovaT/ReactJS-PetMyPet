@@ -25,7 +25,9 @@ const Edit = () => {
     const submitHandler = (e) => {
         e.preventDefault();
 
-        console.log('submit');
+        let petData = Object.fromEntries(new FormData(e.currentTarget));
+        petService.update(pet._id, petData);
+       
     };
 
     const nameOnChangeHandler = (e) => {
