@@ -6,19 +6,19 @@ import { usePetState } from '../../hooks/usePetState';
 import * as petService from '../../services/petService';
 
 const types = [
-    {value: 'dog', text: 'Dog'},
-    {value: 'cat', text: 'Cat'},
-    {value: 'horse', text: 'Horse'},
-    {value: 'parrot', text: 'Parrot'},
-    {value: 'reptile', text: 'Reptile'},
-    {value: 'other', text: 'Other'},
+    {value: 'Dog', text: 'Dog'},
+    {value: 'Cat', text: 'Cat'},
+    {value: 'Horse', text: 'Horse'},
+    {value: 'Parrot', text: 'Parrot'},
+    {value: 'Reptile', text: 'Reptile'},
+    {value: 'Other', text: 'Other'},
 
 ];
 
 
 const Edit = () => {
     const { petId } = useParams();
-    const [pet] = usePetState(petId);
+    const [pet, setPet] = usePetState(petId);
     const [errors, setErrors] = useState({name: false});
     const [show, setShow] = useState(false);
 
@@ -38,13 +38,6 @@ const Edit = () => {
             setShow(false);
         }
     };
-
-    let typeName;
-    if(pet.type !== undefined) {
-       typeName = pet.type[0].toUpperCase() + pet.type.substring(1);
-
-    }
-    console.log(typeName);
 
     return (
         <section id="edit-page" className="edit">
@@ -74,7 +67,7 @@ const Edit = () => {
                     <p className="field">
                         <label htmlFor="type">Type</label>
                         <span className="input">
-                            <select id="type" name="type" defaultValue={typeName ? typeName : 'Other'}>
+                            <select id="type" name="type" value={pet.type} onChange={(e) => setPet(s => ({...s, type: e.target.value}))}>
                                 {types.map(x => <option key={x.value} defaultValue={x.value}>{x.text}</option>)}
                             </select>
                         </span>

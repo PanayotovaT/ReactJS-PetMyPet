@@ -49,12 +49,12 @@ const Create = () => {
                         <label htmlFor="type">Type</label>
                         <span className="input">
                             <select id="type" name="type">
-                                <option value="cat">Cat</option>
-                                <option value="dog">Dog</option>
-                                <option value="horse">Horse</option>
-                                <option value="parrot">Parrot</option>
-                                <option value="reptile">Reptile</option>
-                                <option value="other">Other</option>
+                                <option value="Cat">Cat</option>
+                                <option value="Dog">Dog</option>
+                                <option value="Horse">Horse</option>
+                                <option value="Parrot">Parrot</option>
+                                <option value="Reptile">Reptile</option>
+                                <option value="Other">Other</option>
                             </select>
                         </span>
                     </p>
