@@ -1,9 +1,7 @@
-import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { AuthContext } from './contexts/AuthContext';
 import { Navigate } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
-
+import { NotificationProvider } from './contexts/NotificationContext';
 
 import Header from './components/Header/';
 import Home from './components/Home';
@@ -13,6 +11,7 @@ import Create from './components/Create';
 import Edit from './components/Edit';
 import MyPets from './components/MyPets';
 import Details from './components/Details';
+import Notifiaction from './components/common/Notification';
 import Logout from './components/Logout';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -48,30 +47,32 @@ function App() {
   return (
     <ErrorBoundary>
       <AuthProvider>
-        <div id="container">
+        <NotificationProvider>
+          <div id="container">
 
-          <Header  /**{...userInfo}**/ />
+            <Header  /**{...userInfo}**/ />
+            <Notifiaction />
+            <main id="site-content">
+              <Routes>
+                <Route path="/" element={<Navigate to="/home" />} />
+                <Route path="/home/*" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/logout" element={<Logout  /**onLogout={onLogout}**/ />} />
+                <Route path="/create" element={<Create />} />
+                <Route path="/edit/:petId" element={<Edit />} />
+                <Route path="/my-pets" element={<MyPets />} />
+                <Route path="/details/:petId" element={<Details />} />
+              </Routes>
 
-          <main id="site-content">
-            <Routes>
-              <Route path="/" element={<Navigate to="/home" />} />
-              <Route path="/home/*" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/logout" element={<Logout  /**onLogout={onLogout}**/ />} />
-              <Route path="/create" element={<Create />} />
-              <Route path="/edit/:petId" element={<Edit />} />
-              <Route path="/my-pets" element={<MyPets />} />
-              <Route path="/details/:petId" element={<Details />} />
-            </Routes>
+            </main>
 
-          </main>
+            <footer id="site-footer">
+              <p>@PetMyPet</p>
+            </footer>
 
-          <footer id="site-footer">
-            <p>@PetMyPet</p>
-          </footer>
-
-        </div>
+          </div>
+        </NotificationProvider>
       </AuthProvider>
     </ErrorBoundary>
   );

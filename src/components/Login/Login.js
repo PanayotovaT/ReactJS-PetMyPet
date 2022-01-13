@@ -1,10 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import * as autService from '../../services/authServices.js';
-import {useContext} from 'react';
 import { useAuthContext } from '../../contexts/AuthContext.js';
+import { useNotificationContext } from '../../contexts/NotificationContext.js';
+
 const Login = () => {
     const { login } = useAuthContext();
-    
+    const { addNotification, hideNotification } = useNotificationContext();
     const navigate = useNavigate();
 
     const onSubmitHandler = (e) => {
@@ -20,7 +21,8 @@ const Login = () => {
             autService.login(email, password)
                     .then(result => {
                     login(result);
-                            navigate('/home');
+                    addNotification('You logged in successfully!', 'success');
+                    navigate('/home');
                 }).catch(err => {
                     //TODO show notification
                     console.log(err);

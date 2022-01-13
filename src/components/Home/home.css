@@ -9,9 +9,29 @@
 .type {
     display: block;
     margin-bottom: 10px;
+    display: flex;
+    margin-right: 30px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-style: italic;
+    text-transform: uppercase;
+    border-radius: 5px;
+    padding: 5px 20px;
+    background: lightgray;
+    margin-bottom: 30px;
+    box-shadow: 0px 2px 4px 1px gray;
 }
 
+
 .type:hover{
-    color:rgb(122, 143, 4);
-    font-size: 24px;
+    font-size: 20px;
+    /* color:rgb(184, 121, 121); */
+    background: white;
+    color: rgb(59, 56, 56);
+}
+.nav-type {
+    display: flex;
+    margin-left: 50px;
+ 
 }

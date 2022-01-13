@@ -5,10 +5,17 @@ const baseUrl = 'http://localhost:3030/data';
 
 export const getAll =() => request.get(`${baseUrl}/pets`);
 
-export const getOne = async (petId) => {
-   let response = await fetch(`${baseUrl}/pets/${petId}`);
+export const getOne = async (petId, signal) => {
+   let response = await fetch(`${baseUrl}/pets/${petId}`, {signal});
    let pet = await response.json();
    return pet;
+};
+
+export const getMyPets = (userId) => {
+   let query = encodeURIComponent(`_ownerId="${userId}"`);
+   return request.get(`${baseUrl}/pets?where=${query}`);
+
+   
 };
 
 export const update = (petId, petData) => {

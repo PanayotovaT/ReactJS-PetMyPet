@@ -34,7 +34,7 @@ const getToken = () => {
     try {
         let user = localStorage.getItem('user');
         if(!user) {
-            throw {message: 'You must be authenticated'};
+            throw new Error('You sould be authenticated first!');
         } else {
             return JSON.parse(user).accessToken;
         }

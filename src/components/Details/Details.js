@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 
 import { usePetState } from '../../hooks/usePetState';
@@ -29,7 +29,7 @@ const Details = () => {
             });
     };
 
-    console.log(process.env.NODE_ENV);
+    // console.log(process.env.NODE_ENV);
 
     const deleteClickHandler = (e) => {
         e.preventDefault();
