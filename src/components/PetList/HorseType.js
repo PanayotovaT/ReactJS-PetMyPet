@@ -12,7 +12,7 @@ export const HorseType = () => {
             });
     }, []);
 
-    const horses = pets.filter(x => x.type === 'horse');
+    const horses = pets.filter(x => x.type === 'Horse');
     return (
         <ul className="other-pets-list">
             {
