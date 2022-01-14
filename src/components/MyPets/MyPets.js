@@ -19,7 +19,7 @@ const MyPets = () => {
                 console.log('err');
                 console.log(err);
             });
-    }, []);
+    }, [user._id]);
     return (
         <section id="my-pets-page" className="my-pets">
             <h1>My Pets</h1>

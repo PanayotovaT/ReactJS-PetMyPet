@@ -2,7 +2,6 @@ import { Routes, Route, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 import * as petService from '../../services/petService';
-import * as authService from '../../services/authServices';
 // import { ReactComponent as Logo } from '../../logo.svg';
 import './home.css';
 import PetList from '../PetList/PetList';

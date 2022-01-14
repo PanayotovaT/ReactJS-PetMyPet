@@ -3,7 +3,7 @@ import { useState, useEffect, useMemo } from 'react';
 import * as petService from '../services/petService';
 
 export const usePetState = (petId) => {
-    const [pet, setPet] = useState({});
+    const [pet, setPet] = useState({likes: []});
 
     const controller = useMemo(() => {
         const controller = new AbortController();
@@ -20,7 +20,7 @@ export const usePetState = (petId) => {
             controller.abort();
         };
         
-    }, [petId]);
+    }, [petId, controller]);
 
     return [
         pet,

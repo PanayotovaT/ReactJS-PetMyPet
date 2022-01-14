@@ -18,7 +18,7 @@ export const getMyPets = (userId) => {
    
 };
 
-export const update = (petId, petData) => {
+export const update = async (petId, petData) => {
    request.put(`${baseUrl}/pets/${petId}`, petData);
 };
 

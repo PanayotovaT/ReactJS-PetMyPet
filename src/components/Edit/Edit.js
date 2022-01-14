@@ -1,10 +1,10 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { Alert } from 'react-bootstrap';
 
 import { usePetState } from '../../hooks/usePetState';
 import * as petService from '../../services/petService';
-
+import { useNotificationContext, types as type } from '../../contexts/NotificationContext';
 const types = [
     {value: 'Dog', text: 'Dog'},
     {value: 'Cat', text: 'Cat'},
@@ -21,12 +21,20 @@ const Edit = () => {
     const [pet, setPet] = usePetState(petId);
     const [errors, setErrors] = useState({name: false});
     const [show, setShow] = useState(false);
-
+    const { addNotification } = useNotificationContext();
+    const navigate  = useNavigate();
     const submitHandler = (e) => {
         e.preventDefault();
 
         let petData = Object.fromEntries(new FormData(e.currentTarget));
-        petService.update(pet._id, petData);
+        petService.update(pet._id, petData)
+        .then(() => {
+
+            addNotification('You have successfully updated the item', type.success);
+            navigate(`/details/${petId}`);
+        });
+        
+
        
     };
 
