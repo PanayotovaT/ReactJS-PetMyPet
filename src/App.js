@@ -63,8 +63,8 @@ function App() {
                 <Route path="/logout" element={<Logout  /**onLogout={onLogout}**/ />} />
                 <Route element={<GuardedRoute />}>
                     <Route path="/create" element={<Create />} />
+                    <Route path="/edit/:petId" element={<Edit />} />
                 </Route>
-                <Route path="/edit/:petId" element={<Edit />} />
                 <Route path="my-pets" element={<PrivateRoute><MyPets /></PrivateRoute>} />
                 <Route path="/details/:petId" element={<Details />} />
               </Routes>
