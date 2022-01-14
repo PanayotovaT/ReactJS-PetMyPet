@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import { NotificationProvider } from './contexts/NotificationContext';
+import PrivateRoute from './components/common/PrivateRoute';
 
 import Header from './components/Header/';
 import Home from './components/Home';
@@ -61,7 +62,7 @@ function App() {
                 <Route path="/logout" element={<Logout  /**onLogout={onLogout}**/ />} />
                 <Route path="/create" element={<Create />} />
                 <Route path="/edit/:petId" element={<Edit />} />
-                <Route path="/my-pets" element={<MyPets />} />
+                <Route path="my-pets" element={<PrivateRoute><MyPets /></PrivateRoute>} />
                 <Route path="/details/:petId" element={<Details />} />
               </Routes>
 
