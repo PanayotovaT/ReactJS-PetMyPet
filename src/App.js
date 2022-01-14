@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import { NotificationProvider } from './contexts/NotificationContext';
 import PrivateRoute from './components/common/PrivateRoute';
+import GuardedRoute from './components/common/GuardedRoute';
 
 import Header from './components/Header/';
 import Home from './components/Home';
@@ -60,7 +61,9 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/logout" element={<Logout  /**onLogout={onLogout}**/ />} />
-                <Route path="/create" element={<Create />} />
+                <Route element={<GuardedRoute />}>
+                    <Route path="/create" element={<Create />} />
+                </Route>
                 <Route path="/edit/:petId" element={<Edit />} />
                 <Route path="my-pets" element={<PrivateRoute><MyPets /></PrivateRoute>} />
                 <Route path="/details/:petId" element={<Details />} />
